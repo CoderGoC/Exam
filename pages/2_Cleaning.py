@@ -4,6 +4,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler
+import os
+
+
+
 
 
 st.markdown(
@@ -20,7 +24,10 @@ st.markdown(
 )
 
 
+
 data = pd.read_csv("Electric_Vehicle_Population_Data.csv")
+
+
 
 
 def replace_zeros_with_mean(df, column_name):
@@ -28,15 +35,19 @@ def replace_zeros_with_mean(df, column_name):
     df[column_name] = df[column_name].replace(0, non_zero_mean)
     return df
 
+
 data = replace_zeros_with_mean(data, 'Electric Range')
 data = replace_zeros_with_mean(data, 'Base MSRP')
+
 
 
 st.title("Electric Vehicle Population Data Report")
 st.write(data.head())
 
 
+
 st.write("**Additional Descriptive Statistics:**")
+
 
 numeric_columns = data.select_dtypes(include=[np.number]).columns
 
@@ -52,30 +63,25 @@ stats_df['IQR'] = stats_df['Q3'] - stats_df['Q1']
 st.write(stats_df)
 st.markdown("---")
 
-
 st.write("**Summary Statistics of the Data Frame:**")
 st.write(data.describe())
 st.markdown("---")
 
 
-
-
 st.title("Data Scaling Methods")
 
+
 st.image(
-    "C:/Users/user/Desktop/Exam/Scaling methods.jpg", 
+    "Scaling methods.jpg", 
     caption="Data scaling methods", 
     use_column_width=True
 )
 
 
-
-
-
 st.subheader("Standardization")
 st.markdown("---")
 st.image(
-    "C:/Users/user/Desktop/Exam/Standardisation.jpg", 
+    "Standardisation.jpg", 
     caption="Standardization Method", 
     use_column_width=True
 )
@@ -87,9 +93,9 @@ data_standardized[numeric_columns] = scaler.fit_transform(data[numeric_columns])
 st.write(data_standardized.describe())
 st.markdown("---")
 
-
 st.title("Effects of Standardization Method on Skewed Data")
 st.markdown("---")
+
 def plot_distribution(data, title):
     fig, axes = plt.subplots(1, len(numeric_columns), figsize=(20, 5))
     fig.suptitle(title, fontsize=16)
@@ -101,13 +107,11 @@ def plot_distribution(data, title):
 st.markdown("---")
 
 plot_distribution(data, "Original Data Distribution")
-
-
 plot_distribution(data_standardized, "Standardized Data Distribution")
 
 st.markdown("---")
 st.image(
-    "C:/Users/user/Desktop/Exam/Standardisation summary.jpg", 
+    "Standardisation summary.jpg", 
     caption="Standardisation Method summary", 
     use_column_width=True
 )
@@ -115,11 +119,10 @@ st.image(
 
 
 
-
 st.subheader("Min-Max Scaling")
 st.markdown("---")
 st.image(
-    "C:/Users/user/Desktop/Exam/MinMax.jpg", 
+    "MinMax.jpg", 
     caption="Min-Max Scaling Method", 
     use_column_width=True
 )
@@ -131,26 +134,14 @@ data_minmax[numeric_columns] = scaler.fit_transform(data[numeric_columns])
 st.write(data_minmax.describe())
 st.markdown("---")
 
-
-st.title("Effects of Min-Max Scaling method on Skewed Data")
-st.markdown("---")
-def plot_distribution(data, title):
-    fig, axes = plt.subplots(1, len(numeric_columns), figsize=(20, 5))
-    fig.suptitle(title, fontsize=16)
-    for i, column in enumerate(numeric_columns):
-        sns.histplot(data[column], kde=True, ax=axes[i])
-        axes[i].set_title(column)
-    st.pyplot(fig)
-
+st.title("Effects of Min-Max Scaling Method on Skewed Data")
 st.markdown("---")
 
 plot_distribution(data, "Original Data Distribution")
-
-
 plot_distribution(data_minmax, "Min-Max Scaled Data Distribution")
 
 st.image(
-    "C:/Users/user/Desktop/Exam/MinMax summary.jpg", 
+    "MinMax summary.jpg", 
     caption="Min-Max Scaling Method Summary", 
     use_column_width=True
 )
@@ -158,14 +149,10 @@ st.image(
 
 
 
-
-
-
-
 st.subheader("Mean Normalization")
 st.markdown("---")
 st.image(
-    "C:/Users/user/Desktop/Exam/Mean Normal.jpg", 
+    "Mean Normal.jpg", 
     caption="Mean Normalization", 
     use_column_width=True
 )
@@ -177,40 +164,24 @@ for column in numeric_columns:
 st.write(data_mean_normalized.describe())
 st.markdown("---")
 
-
-st.title("Effects of Mean Normalization method on Skewed Data")
-st.markdown("---")
-def plot_distribution(data, title):
-    fig, axes = plt.subplots(1, len(numeric_columns), figsize=(20, 5))
-    fig.suptitle(title, fontsize=16)
-    for i, column in enumerate(numeric_columns):
-        sns.histplot(data[column], kde=True, ax=axes[i])
-        axes[i].set_title(column)
-    st.pyplot(fig)
-
+st.title("Effects of Mean Normalization Method on Skewed Data")
 st.markdown("---")
 
 plot_distribution(data, "Original Data Distribution")
-
-
 plot_distribution(data_mean_normalized, "Mean Normalized Data Distribution")
 
 st.image(
-    "C:/Users/user/Desktop/Exam/Mean Normal summary.jpg", 
+    "Mean Normal summary.jpg", 
     caption="Mean Normalization Summary", 
     use_column_width=True
 )
 
 
 
-
-
-
-
 st.subheader("Robust Scaling")
 st.markdown("---")
 st.image(
-    "C:/Users/user/Desktop/Exam/Robust.jpg", 
+    "Robust.jpg", 
     caption="Robust Scaling", 
     use_column_width=True
 )
@@ -222,62 +193,25 @@ data_robust[numeric_columns] = scaler.fit_transform(data[numeric_columns])
 st.write(data_robust.describe())
 st.markdown("---")
 
-
-st.title("Effects of Robust Scaling method on Skewed Data")
-st.markdown("---")
-def plot_distribution(data, title):
-    fig, axes = plt.subplots(1, len(numeric_columns), figsize=(20, 5))
-    fig.suptitle(title, fontsize=16)
-    for i, column in enumerate(numeric_columns):
-        sns.histplot(data[column], kde=True, ax=axes[i])
-        axes[i].set_title(column)
-    st.pyplot(fig)
-
+st.title("Effects of Robust Scaling Method on Skewed Data")
 st.markdown("---")
 
 plot_distribution(data, "Original Data Distribution")
-
 plot_distribution(data_robust, "Robust Scaled Data Distribution")
 
 st.image(
-    "C:/Users/user/Desktop/Exam/Robust summary.jpg", 
+    "Robust summary.jpg", 
     caption="Robust Scaling Summary", 
     use_column_width=True
 )
 
 
 
-
-
-
-
-
-
-
-
-
 st.title("Effects of Scaling on Skewed Data")
-st.markdown("---")
-def plot_distribution(data, title):
-    fig, axes = plt.subplots(1, len(numeric_columns), figsize=(20, 5))
-    fig.suptitle(title, fontsize=16)
-    for i, column in enumerate(numeric_columns):
-        sns.histplot(data[column], kde=True, ax=axes[i])
-        axes[i].set_title(column)
-    st.pyplot(fig)
-
 st.markdown("---")
 
 plot_distribution(data, "Original Data Distribution")
-
-
 plot_distribution(data_standardized, "Standardized Data Distribution")
-
-
 plot_distribution(data_minmax, "Min-Max Scaled Data Distribution")
-
-
 plot_distribution(data_mean_normalized, "Mean Normalized Data Distribution")
-
-
 plot_distribution(data_robust, "Robust Scaled Data Distribution")
