@@ -6,7 +6,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
-# Set page configuration
 st.set_page_config(
     page_title="EV Base MSRP Prediction Dashboard",
     page_icon="🚗",
@@ -14,10 +13,9 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Load data
 data = pd.read_csv("Electric_Vehicle_Population_Data.csv")
 
-# Style the app
+
 st.markdown(
     """
     <style>
