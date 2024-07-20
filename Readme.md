@@ -1,19 +1,44 @@
-# Data Science Homework
+# Data Science Project
 
-Ushbu repository CoderGoC tomonidan yaratilgan data science uy vazifalarini o'z ichiga oladi. Bu yerda turli data science muammolarini hal qilish bo'yicha mashqlar, kodlar va natijalar jamlangan.
+This repository contains the data science Exam project created by CoderGoC. Here are exercises, codes and results for solving various data science problems.
 
-## Loyihaning maqsadi
+In this project, we embarked on a comprehensive journey to develop a predictive model for estimating the base MSRP of electric vehicles based on their model year and electric range. Here’s a summary of the key steps and findings:
 
-Ushbu repository quyidagi maqsadlarga ega:
-- Data science asoslarini o'rganish va mustahkamlash
-- Turli data science vositalari va kutubxonalaridan foydalanishni o'rganish
-- Statistik tahlillar va ma'lumotlar vizualizatsiyasi bo'yicha amaliy tajribaga ega bo'lish
-- Ma'lumotlarni qayta ishlash va modellash bo'yicha ko'nikmalarni rivojlantirish
+# 1. **Data Collection**
+We began by collecting a dataset on electric vehicle populations, which included various attributes such as `Make`, `Model Year`, `Electric Range`, and `Base MSRP`. This data served as the foundation for our analysis and modeling.
+
+# 2. **Data Cleaning**
+To ensure the accuracy and reliability of our predictions, we performed several data cleaning tasks:
+- **Handling Missing Values**: We replaced zeros in the `Base MSRP` column with the mean of non-zero values. This step was crucial to avoid skewing our analysis with zero values that might not be meaningful.
+- **Feature Selection**: We focused on relevant features such as `Model Year` and `Electric Range`, which we hypothesized would have a significant impact on the `Base MSRP`.
+
+# 3. **Exploratory Data Analysis (EDA)**
+EDA was conducted to gain insights into the data and to understand the relationships between different variables:
+- **Visualization**: Various visualizations were used to explore the distribution of `Base MSRP` across different `Makes` and `Model Years`, and to analyze the relationship between `Electric Range` and `Base MSRP`.
+- **Growth Rate Analysis**: We calculated the recent 5-year growth rate of `Base MSRP` for each make, providing insights into how vehicle pricing trends have evolved.
+
+# 4. **Prediction Model**
+A linear regression model was developed to predict the `Base MSRP` based on `Model Year` and `Electric Range`:
+- **Model Training**: We trained the model using historical data, splitting it into training and testing sets to evaluate its performance.
+- **Model Evaluation**: The model was evaluated using Mean Squared Error (MSE) and R² Score. The MSE indicated the average squared difference between predicted and actual values, while the R² Score showed the proportion of variance explained by the model.
+
+Despite the challenges faced, including high MSE and low R² Score, these results provided valuable insights into the limitations of the current model. The low R² Score suggests that the model may not fully capture the complexity of the data, indicating potential areas for improvement.
 
 
-## Ishlatilgan texnologiyalar
 
-Ushbu loyihada quyidagi texnologiyalar va kutubxonalardan foydalanilgan:
+## Project aim
+
+- The aim of this project is to analyze a document that provides detailed information and statistics about the number and distribution of electric vehicles (EVs) within Washington, D.C.
+This repository has the following goals:
+- Learning and strengthening the basics of data science
+- Learning to use various data science tools and libraries
+- Gain practical experience in statistical analysis and data visualization
+- Development of skills in data processing and modeling
+
+
+## Used technologies
+
+The following technologies and libraries were used in this project:
 - Python
 - Pandas
 - NumPy
@@ -24,13 +49,13 @@ Ushbu loyihada quyidagi texnologiyalar va kutubxonalardan foydalanilgan:
 - os
 
 
-## Qanday foydalanish
+## How to use
 
-1. Repositoryni klonlash:
+1. Clone the repository:
    ```bash
    git clone https://github.com/CoderGoC/Exam.git
    ```
-2. Virtual muhit yaratish va kerakli kutubxonalarni o'rnatish:
+2. Create a virtual environment and install the required libraries:
    ```bash
    cd Data-science-home-work
    python -m venv venv
@@ -44,24 +69,24 @@ Ushbu loyihada quyidagi texnologiyalar va kutubxonalardan foydalanilgan:
    ```bash
    pip install -r requirements.txt
    ```
-3. Python py fileni ishga tushirish:
+3. Run the Python py file:
    ```bash
    Streamlit run Home.py
    ```
 
-## Hissa qo'shish
+## Contribute
 
-Agar loyihaga hissa qo'shmoqchi bo'lsangiz, iltimos quyidagi qadamlarni bajaring:
-1. Repositoryni fork qiling
-2. Yangi branch oching (`git checkout -b feature/YourFeature`)
-3. O'zgarishlarni kiritib commit qiling (`git commit -m 'Add some feature'`)
-4. Branchni push qiling (`git push origin feature/YourFeature`)
-5. Pull request yarating
+If you would like to contribute to the project, please follow these steps:
+1. Fork the repository
+2. Open a new branch (`git checkout -b feature/YourFeature`)
+3. Commit the changes (`git commit -m 'Add some feature'')
+4. Push the branch (`git push origin feature/YourFeature`)
+5. Create a pull request
 
 ## Litsenziya
 
-Ushbu loyiha MIT litsenziyasi ostida tarqatiladi. Batafsil ma'lumot uchun [LICENSE](LICENSE) faylini ko'rib chiqing.
+This project is distributed under the MIT license. See the [LICENSE](LICENSE) file for details.
 
 
 
-Loyihaga qiziqishingiz uchun rahmat!
+Thank you for your interest in the project!
