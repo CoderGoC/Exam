@@ -71,7 +71,7 @@ def stream_data():
         re_dat = re_dat.tail(5)
 
         re_dat['Growth Rate (%)'] = ((re_dat['Base MSRP'] - re_dat['Previous Year Value']) / re_dat['Previous Year Value']) * 100
-        # re_dat = re_dat.dropna(subset=['Growth Rate (%)'])
+        re_dat = re_dat.dropna(subset=['Growth Rate (%)'])
 
         text = '\nRecent 5-Year Growth Rate\n'
         for word in text.split(" "):
