@@ -7,6 +7,21 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-image: url("https://i2.wp.com/files.123freevectors.com/wp-content/original/154027-abstract-blue-and-white-background-design.jpg?w=500&q=95");
+        background-size: cover;
+        background-position: center;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
+
 st.title('Conclusion')
 
 st.markdown("""
